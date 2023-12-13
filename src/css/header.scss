@@ -47,12 +47,11 @@
   background-color: #fff;
   border: none;
   border-radius: 0.25rem;
-  font-family: $bodyFont;
-  color: #212529;
-  font-size: 1rem;
-  font-weight: 400;
   padding: 0 0.75rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  font-family: $bodyFont;
+  font-weight: 300;
+  font-size: 1rem;
+  color: #212529;
   height: 45px;
   &:focus {
     outline: 1px solid $primary;
@@ -155,17 +154,6 @@ input:not(.searchBar) {
       padding-top: 80px;
     }
     .header {
-      height: 35px;
-      gap: 10px;
-      .button_slide--reset {
-        max-width: 80px;
-        margin-left: auto;
-      }
-      &.filtersOpen {
-        .header__right {
-          transform: translateY(47.6vh);
-        }
-      }
       h1 {
         font-size: 18px;
       }
@@ -175,32 +163,48 @@ input:not(.searchBar) {
           max-height: 35px;
         }
       }
-      &__right {
-        background-color: $secondary;
-        padding: 20px 0;
-        grid-template-rows: auto auto;
-        transform: translateY(100vh);
-        transition: all 0.35s ease;
-        will-change: transform;
-        &--bottom {
-          grid-template-columns: 1fr;
-        }
-      }
-      .runtimeFilter {
-        bottom: -10px;
-        left: 0;
-        &__container {
-          right: unset;
-          position: unset;
-          text-align: left;
-          input {
-            width: 8rem;
-          }
-        }
+    }
+  }
+  .mobileFilters {
+    grid-template-rows: auto auto;
+    gap: 10px;
+    position: fixed;
+    bottom: 45px;
+    left: 0;
+    z-index: 3;
+    width: calc(100% - 30px);
+    background-color: $secondary;
+    padding: 20px 15px;
+    transform: translateY(100vh);
+    transition: all 0.35s ease;
+    will-change: transform;
+    &.visible {
+      transform: translateY(0);
+    }
+    &__bottom {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      position: relative;
+    }
+    .button_slide--reset {
+      max-width: 80px;
+      margin-left: auto;
+    }
+  }
+  .runtimeFilter {
+    bottom: -10px;
+    left: 0;
+    &__container {
+      right: unset;
+      position: unset;
+      text-align: left;
+      input {
+        width: 8rem;
       }
     }
   }
   select {
     min-width: 345px;
+    width: 100%;
   }
 }

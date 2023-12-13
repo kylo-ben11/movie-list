@@ -2,7 +2,7 @@
 @import 'header';
 @import 'movieCard';
 @import 'variables';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;1,100&family=Roboto+Condensed:wght@100;300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500&family=Roboto+Condensed:wght@100;300;700&display=swap');
 
 // e/o Imports
 html {
@@ -38,7 +38,7 @@ body {
 
 // Layout
 .visible-xs {
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 631px) {
     display: none !important;
   }
 }
@@ -48,7 +48,7 @@ body {
   }
 }
 .hidden-xs {
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 630px) {
     display: none !important;
   }
 }
@@ -82,6 +82,7 @@ button {
   padding: 0 10px;
   display: inline-block;
   font-family: $buttonFont;
+  font-weight: 300;
   font-size: 14px;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -105,16 +106,16 @@ h1 {
 .filterDropdownToggle {
   background-color: $secondary;
   position: fixed;
-  height: 45px;
   &:active {
     background-color: $primary;
   }
 }
 .scrollTop {
   z-index: 1;
-  bottom: 55px;
+  bottom: 75px;
   right: 15px;
-  width: 45px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   border: 1px solid $primary;
   background: $secondary no-repeat center/1.8em $arrow-icon;
@@ -128,6 +129,7 @@ h1 {
   bottom: 0;
   left: 0;
   width: 100%;
+  height: 55px;
   border-top: 1px solid $primary;
   color: #fff;
   font-family: $buttonFont;

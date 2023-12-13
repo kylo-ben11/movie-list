@@ -136,6 +136,9 @@
     font-size: 1.25rem;
     font-weight: 400;
   }
+  &__runtime {
+    font-weight: 300;
+  }
 
   // Streaming Stamps
   &__streaming {
@@ -248,7 +251,7 @@
       }
     }
     &__info {
-      font-size: 13px;
+      font-size: 12px;
     }
     &__streamingStamp {
       width: 18px;

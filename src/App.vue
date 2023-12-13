@@ -9,7 +9,7 @@
         <h1 class="hidden-sm">Massive Movie<br />Collection</h1>
         <h1 class="visible-sm">Massive Movie Collection</h1>
       </div>
-      <div class="header__right grid">
+      <div class="header__right hidden-xs grid">
         <!-- Practice two-way binding by emitting event in component -->
         <search-input v-model:searchQuery="searchQuery" />
 
@@ -38,6 +38,38 @@
         </div>
       </div>
     </section>
+
+    <div
+      class="mobileFilters visible-xs grid"
+      :class="{ visible: filtersOpen }"
+    >
+      <!-- Practice two-way binding by emitting event in component -->
+      <search-input v-model:searchQuery="searchQuery" />
+
+      <div class="mobileFilters__bottom grid">
+        <!-- Much simpler to use v-model in main App.vue and run the options through a component -->
+        <select
+          class="round"
+          name="filterGenre"
+          id="filter-genre"
+          v-model="filterGenre"
+        >
+          <genre-filter></genre-filter>
+        </select>
+        <!-- Fun use of v-if to practice displaying dynamic content based on if something is truthy or not -->
+        <button class="button_slide" @click="inARush">
+          <span v-if="!rushing"> I'm limited on time </span>
+          <span v-else> I've got all the time in the world </span>
+        </button>
+        <button class="button_slide button_slide--reset" @click="resetSearch">
+          Reset
+        </button>
+        <!-- Display Runtime Filter if I'm in a rush, otherwise keep the UI less cluttered -->
+        <div class="runtimeFilter" :class="{ visible: rushing }">
+          <runtime-filter v-model:maxRuntime="maxRuntime" />
+        </div>
+      </div>
+    </div>
 
     <div class="movieCard__container">
       <movie-card
