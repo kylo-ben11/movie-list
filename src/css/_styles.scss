@@ -1,0 +1,139 @@
+// Imports
+@import 'header';
+@import 'movieCard';
+@import 'variables';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;1,100&family=Roboto+Condensed:wght@100;300;700&display=swap');
+
+// e/o Imports
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $darkColor;
+  color: #fff;
+  font-family: $bodyFont;
+  padding-bottom: 40px;
+}
+
+// Animations
+@keyframes move {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  5% {
+    opacity: 0;
+  }
+  48% {
+    opacity: 0.2;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    left: 82%;
+  }
+}
+
+// Layout
+.visible-xs {
+  @media screen and (min-width: 768px) {
+    display: none !important;
+  }
+}
+.visible-sm {
+  @media screen and (min-width: 1025px) {
+    display: none !important;
+  }
+}
+.hidden-xs {
+  @media screen and (max-width: 767px) {
+    display: none !important;
+  }
+}
+.hidden-sm {
+  @media screen and (max-width: 1024px) {
+    display: none !important;
+  }
+}
+
+.hidden {
+  display: none;
+}
+.grid {
+  display: grid;
+  align-items: center;
+}
+.flex {
+  display: flex;
+}
+
+// Elements
+button {
+  border: none;
+}
+.button_slide {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid $primary;
+  border-radius: 0px;
+  height: 45px;
+  padding: 0 10px;
+  display: inline-block;
+  font-family: $buttonFont;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 $primary;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+  &:hover {
+    box-shadow: inset 0 0 0 50px $primary;
+  }
+}
+h1 {
+  font-family: $headingFont;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 100;
+}
+.scrollTop,
+.filterDropdownToggle {
+  background-color: $secondary;
+  position: fixed;
+  height: 45px;
+  &:active {
+    background-color: $primary;
+  }
+}
+.scrollTop {
+  z-index: 1;
+  bottom: 55px;
+  right: 15px;
+  width: 45px;
+  border-radius: 50%;
+  border: 1px solid $primary;
+  background: $secondary no-repeat center/1.8em $arrow-icon;
+  transform: rotateX(180deg);
+}
+.filterDropdownToggle {
+  grid-template-columns: auto auto;
+  justify-content: center;
+  gap: 10px;
+  z-index: 3;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid $primary;
+  color: #fff;
+  font-family: $buttonFont;
+  font-size: 16px;
+  text-transform: uppercase;
+  img {
+    max-height: 20px;
+  }
+}
