@@ -82,7 +82,7 @@
       ></movie-card>
     </div>
   </div>
-  <a href="#top" class="visible-xs scrollTop"></a>
+  <a href="#top" class="scrollTop"></a>
   <button
     @click="mobileFilterDropdown"
     class="visible-xs filterDropdownToggle grid"

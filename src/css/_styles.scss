@@ -112,14 +112,18 @@ h1 {
 }
 .scrollTop {
   z-index: 1;
-  bottom: 75px;
-  right: 15px;
+  bottom: 50px;
+  right: 50px;
   width: 55px;
   height: 55px;
   border-radius: 50%;
   border: 1px solid $primary;
   background: $secondary no-repeat center/1.8em $arrow-icon;
   transform: rotateX(180deg);
+  @media screen and (max-width: 630px) {
+    bottom: 70px;
+    right: 15px;
+  }
 }
 .filterDropdownToggle {
   grid-template-columns: auto auto;
