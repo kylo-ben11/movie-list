@@ -109,17 +109,17 @@
     }
     &.rotten {
       &:before {
-        background-image: url('./components/images/rotten.svg');
+        background-image: url('./assets/images/rotten.svg');
       }
     }
     &.fresh {
       &:before {
-        background-image: url('./components/images/fresh.svg');
+        background-image: url('./assets/images/fresh.svg');
       }
     }
     &.certified {
       &:before {
-        background-image: url('./components/images/certified.svg');
+        background-image: url('./assets/images/certified.svg');
       }
     }
     &.unrated {

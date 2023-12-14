@@ -5,7 +5,7 @@
       :class="{ filtersOpen: filtersOpen }"
     >
       <div class="header__left grid">
-        <img src="./components/images/movies-icon.png" alt="" class="logo" />
+        <img src="./assets/images/movies-icon.png" alt="" class="logo" />
         <h1 class="hidden-sm">Massive Movie<br />Collection</h1>
         <h1 class="visible-sm">Massive Movie Collection</h1>
       </div>
@@ -43,11 +43,9 @@
       class="mobileFilters visible-xs grid"
       :class="{ visible: filtersOpen }"
     >
-      <!-- Practice two-way binding by emitting event in component -->
       <search-input v-model:searchQuery="searchQuery" />
 
       <div class="mobileFilters__bottom grid">
-        <!-- Much simpler to use v-model in main App.vue and run the options through a component -->
         <select
           class="round"
           name="filterGenre"
@@ -56,7 +54,6 @@
         >
           <genre-filter></genre-filter>
         </select>
-        <!-- Fun use of v-if to practice displaying dynamic content based on if something is truthy or not -->
         <button class="button_slide" @click="inARush">
           <span v-if="!rushing"> I'm limited on time </span>
           <span v-else> I've got all the time in the world </span>
@@ -64,7 +61,6 @@
         <button class="button_slide button_slide--reset" @click="resetSearch">
           Reset
         </button>
-        <!-- Display Runtime Filter if I'm in a rush, otherwise keep the UI less cluttered -->
         <div class="runtimeFilter" :class="{ visible: rushing }">
           <runtime-filter v-model:maxRuntime="maxRuntime" />
         </div>
@@ -91,9 +87,18 @@
     @click="mobileFilterDropdown"
     class="visible-xs filterDropdownToggle grid"
   >
-    <img src="./components/images/bars.svg" alt="" />
-    <span v-if="filtersOpen">View Results</span
-    ><span v-else>Narrow Down Choices</span>
+    <img
+      v-if="filtersOpen"
+      src="./assets/images/view.svg"
+      alt="decorational no alt text needed"
+    />
+    <img
+      v-else
+      src="./assets/images/filter.svg"
+      alt="decorational no alt text needed"
+    />
+    <span v-if="filtersOpen">View {{ filteredMovies.length }} Results</span>
+    <span v-else>Narrow Down Choices</span>
   </button>
 </template>
 
@@ -166,17 +171,35 @@ export default {
     },
   },
   methods: {
+    // Clear the filters and search when clicked
     resetSearch() {
       this.searchQuery = '';
       this.filterGenre = 'all';
       this.maxRuntime = null;
       this.rushing = false;
     },
+    // Show the runtime filter when clicked
     inARush() {
       this.rushing = !this.rushing;
     },
+    // Show the mobile search and filters when clicked
     mobileFilterDropdown() {
       this.filtersOpen = !this.filtersOpen;
+    },
+  },
+  watch: {
+    // Watch for if modal is open, and if so prevent the body from scrolling
+    filtersOpen() {
+      let body = document.body;
+      if (this.filtersOpen) {
+        body.style.position = 'fixed';
+        body.style.top = `-${window.scrollY}px`;
+      } else {
+        const scrollY = body.style.top;
+        body.style.position = '';
+        body.style.top = '';
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
     },
   },
 };

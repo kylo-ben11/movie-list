@@ -165,46 +165,4 @@ input:not(.searchBar) {
       }
     }
   }
-  .mobileFilters {
-    grid-template-rows: auto auto;
-    gap: 10px;
-    position: fixed;
-    bottom: 45px;
-    left: 0;
-    z-index: 3;
-    width: calc(100% - 30px);
-    background-color: $secondary;
-    padding: 20px 15px;
-    transform: translateY(100vh);
-    transition: all 0.35s ease;
-    will-change: transform;
-    &.visible {
-      transform: translateY(0);
-    }
-    &__bottom {
-      grid-template-columns: 1fr;
-      gap: 10px;
-      position: relative;
-    }
-    .button_slide--reset {
-      max-width: 80px;
-      margin-left: auto;
-    }
-  }
-  .runtimeFilter {
-    bottom: -10px;
-    left: 0;
-    &__container {
-      right: unset;
-      position: unset;
-      text-align: left;
-      input {
-        width: 8rem;
-      }
-    }
-  }
-  select {
-    min-width: 345px;
-    width: 100%;
-  }
 }

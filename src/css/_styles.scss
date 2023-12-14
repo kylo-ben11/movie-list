@@ -13,7 +13,7 @@ body {
   background-color: $darkColor;
   color: #fff;
   font-family: $bodyFont;
-  padding-bottom: 40px;
+  padding-bottom: 130px;
 }
 
 // Animations
@@ -137,5 +137,51 @@ h1 {
   text-transform: uppercase;
   img {
     max-height: 20px;
+  }
+}
+@media screen and (max-width: 630px) {
+  .mobileFilters {
+    grid-template-rows: auto auto 1fr;
+    gap: 10px;
+    position: fixed;
+    bottom: 45px;
+    left: 0;
+    z-index: 3;
+    width: calc(100% - 30px);
+    height: calc(100% - 140px);
+    padding: 20px 15px;
+    transform: translateY(100vh);
+    transition: all 0.35s ease;
+    will-change: transform;
+    background-color: $secondary;
+    border-top: 1px solid $primary;
+    &.visible {
+      transform: translateY(0);
+    }
+    &__bottom {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      position: relative;
+    }
+    .button_slide--reset {
+      max-width: 80px;
+      margin-left: auto;
+    }
+  }
+  .runtimeFilter {
+    bottom: -10px;
+    left: 0;
+    &__container {
+      right: unset;
+      position: unset;
+      text-align: left;
+      input {
+        width: 8rem;
+      }
+    }
+  }
+  select {
+    min-width: 345px;
+    width: 100%;
   }
 }
