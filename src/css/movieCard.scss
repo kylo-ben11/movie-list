@@ -2,261 +2,377 @@
 
 // Movie Card
 .movieCard {
-  &:hover {
-    .movieCard__poster {
-      transform: scale(1.05);
-    }
-  }
-  // main list container
-  &__container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 250px);
-    justify-content: center;
-    gap: 15px;
-  }
-  // e/o main list container
+	&:hover {
+		.movieCard__poster {
+			transform: scale(1.05);
+		}
+	}
+	// main list container
+	&__container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, 250px);
+		justify-content: center;
+		gap: 15px;
+	}
+	// e/o main list container
 
-  // Poster
-  &__poster {
-    position: relative;
-    min-height: 399px;
-    transition: all 0.35s ease;
-    will-change: scale;
-    &--image {
-      position: relative;
-      overflow: hidden;
-      &.shimmer {
-        &:before {
-          content: '';
-          position: absolute;
-          opacity: 0;
-          top: 0;
-          left: 0;
-          z-index: 1;
-          background: linear-gradient(
-            to right,
-            rgba(255, 215, 0, 0) 0%,
-            rgba(255, 215, 0, 0.03) 1%,
-            rgba(255, 215, 0, 0.6) 30%,
-            rgba(255, 215, 0, 0.85) 50%,
-            rgba(255, 215, 0, 0.85) 70%,
-            rgba(255, 215, 0, 0.85) 71%,
-            rgba(255, 215, 0, 0) 100%
-          );
-          width: 35%;
-          height: 100%;
-          transform: skew(-10deg, 0deg);
-          animation: move 2s;
-          animation-iteration-count: infinite;
-          animation-delay: 1s;
-        }
-      }
-    }
-    img {
-      max-width: 100%;
-    }
-  }
-  // e/o poster
+	// Poster
+	&__poster {
+		position: relative;
+		transition: all 0.35s ease;
+		will-change: scale;
+		&:hover {
+			cursor: pointer;
+		}
+		&--imageContainer {
+			min-height: 399px;
+		}
+		&--image {
+			position: relative;
+			overflow: hidden;
+		}
+		img {
+			max-width: 100%;
+		}
+	}
+	// e/o poster
 
-  // Rated, and rating
-  &__rated,
-  &__rating {
-    position: absolute;
-    top: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    color: #fff;
-  }
-  &__rated {
-    right: 5px;
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
-    font-size: 16px;
-    &.G,
-    &.PG,
-    &.TVY,
-    &.TVG {
-      background-color: $ratedG;
-    }
-    &.PG13 {
-      background-color: $ratedPG13;
-      font-size: 12px;
-      color: #000;
-    }
-    &.R {
-      background-color: $ratedR;
-    }
-  }
-  &__rating {
-    left: 5px;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 3px;
-    color: #fff;
-    font-size: 12px;
-    padding: 7.5px 5px 7.5px 35px;
-    line-height: 18px;
-    &:before {
-      content: '';
-      background-size: contain;
-      display: block;
-      height: 25px;
-      left: 5px;
-      position: absolute;
-      width: 25px;
-    }
-    &.rotten {
-      &:before {
-        background-image: url('./assets/images/rotten.svg');
-      }
-    }
-    &.fresh {
-      &:before {
-        background-image: url('./assets/images/fresh.svg');
-      }
-    }
-    &.certified {
-      &:before {
-        background-image: url('./assets/images/certified.svg');
-      }
-    }
-    &.unrated {
-      display: none;
-    }
-  }
-  // e/o Rated, and rating
+	// Rated, and rating
+	&__rated,
+	&__rating {
+		position: absolute;
+		top: 5px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 900;
+		color: #fff;
+	}
+	&__rated {
+		right: 5px;
+		border-radius: 50%;
+		height: 40px;
+		width: 40px;
+		font-size: 16px;
+		&.G,
+		&.PG,
+		&.TVY,
+		&.TVG {
+			background-color: $ratedG;
+		}
+		&.PG13 {
+			background-color: $ratedPG13;
+			font-size: 12px;
+			color: #000;
+		}
+		&.R {
+			background-color: $ratedR;
+		}
+		&.NA {
+			background-color: #000;
+		}
+	}
+	&__rating {
+		left: 5px;
+		background-color: rgba(0, 0, 0, 0.7);
+		border-radius: 3px;
+		color: #fff;
+		font-size: 12px;
+		padding: 7.5px 5px 7.5px 35px;
+		line-height: 18px;
+		&:before {
+			content: '';
+			background-size: contain;
+			display: block;
+			height: 25px;
+			left: 5px;
+			position: absolute;
+			width: 25px;
+		}
+		&.rotten {
+			&:before {
+				background-image: url('./assets/images/rotten.svg');
+			}
+		}
+		&.fresh {
+			&:before {
+				background-image: url('./assets/images/fresh.svg');
+			}
+		}
+		&.certified {
+			&:before {
+				background-image: url('./assets/images/certified.svg');
+			}
+		}
+		&.unrated {
+			display: none;
+		}
+	}
+	// e/o Rated, and rating
 
-  // Info
-  &__info {
-    font-weight: 100;
-  }
-  &__title {
-    font-size: 1.25rem;
-    font-weight: 400;
-  }
-  &__runtime {
-    font-weight: 300;
-  }
+	// Info
+	&__info {
+		font-weight: 100;
+	}
+	&__title {
+		font-size: 1.25rem;
+		font-weight: 400;
+	}
+	&__runtime {
+		font-weight: 300;
+	}
 
-  // Streaming Stamps
-  &__streaming {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2.5%;
-    padding: 10px 0;
-    width: 100%;
-    &--on {
-      width: 100%;
-      text-align: left;
-      margin-bottom: 5px;
-    }
-    &.vudu {
-      .movieCard__streamingStamp[value*='vudu'] {
-        display: flex;
-      }
-    }
-    &.primeVideo {
-      .movieCard__streamingStamp[value*='primeVideo'] {
-        display: flex;
-      }
-    }
-    &.moviesAnywhere {
-      .movieCard__streamingStamp[value*='moviesAnywhere'] {
-        display: flex;
-      }
-    }
-    &.iTunes {
-      .movieCard__streamingStamp[value*='iTunes'] {
-        display: flex;
-      }
-    }
-    &.bluRay {
-      .movieCard__streamingStamp[value*='bluRay'] {
-        display: flex;
-      }
-    }
-    &.dvd {
-      .movieCard__streamingStamp[value*='dvd'] {
-        display: flex;
-      }
-    }
-  }
-  &__streamingStamp {
-    height: 15px;
-    width: 30px;
-    display: none;
-    transform: skew(-20deg);
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    color: #000;
-    font-weight: 600;
-    font-family: 'Oswald', sans-serif;
-    &[value*='vudu'] {
-      background-color: $vudu;
-    }
-    &[value*='primeVideo'] {
-      background-color: $primeVideo;
-    }
-    &[value*='moviesAnywhere'] {
-      background-color: $moviesAnywhere;
-    }
-    &[value*='iTunes'] {
-      background-color: $iTunes;
-    }
-    &[value*='bluRay'] {
-      background-color: $bluRay;
-    }
-    &[value*='dvd'] {
-      background-color: $dvd;
-    }
-  }
-  // e/o Streaming Stamps
-  // e/o Info
-  @media screen and (max-width: 1024px) {
-    &__title {
-      display: none;
-    }
-  }
-  @media screen and (max-width: 767px) {
-    &__container {
-      grid-template-columns: repeat(auto-fit, 30%);
-      gap: 10px;
-    }
-    &__poster {
-      min-height: 171px;
-    }
-  }
-  @media screen and (max-width: 475px) {
-    &__container {
-      gap: 30px 10px;
-    }
-    &__rated {
-      border-radius: 0;
-      font-size: 12px;
-      height: auto;
-      width: 100%;
-      left: 0;
-      top: -15px;
-    }
-    &__rating {
-      bottom: 10px;
-      top: auto;
-      padding: 5px 5px 5px 27.5px;
-      &:before {
-        height: 17.5px;
-        width: 17.5px;
-      }
-    }
-    &__info {
-      font-size: 12px;
-    }
-    &__streamingStamp {
-      width: 18px;
-    }
-  }
+	// Streaming Stamps
+	&__streaming {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2.5%;
+		padding: 10px 0;
+		width: 100%;
+		&--on {
+			width: 100%;
+			text-align: left;
+			margin-bottom: 5px;
+		}
+	}
+	&__streamingStamp {
+		height: 15px;
+		width: 30px;
+		display: none;
+		transform: skew(-20deg);
+		justify-content: center;
+		align-items: center;
+		font-size: 14px;
+		color: #000;
+		font-weight: 600;
+		font-family: 'Oswald', sans-serif;
+		&.visible {
+			display: flex;
+		}
+		&[value*='vudu'] {
+			background-color: $vudu;
+		}
+		&[value*='prime video'] {
+			background-color: $primeVideo;
+		}
+		&[value*='movies anywhere'] {
+			background-color: $moviesAnywhere;
+		}
+		&[value*='itunes'] {
+			background-color: $iTunes;
+		}
+		&[value*='blu-ray'] {
+			background-color: $bluRay;
+		}
+		&[value*='dvd'] {
+			background-color: $dvd;
+		}
+	}
+	// e/o Streaming Stamps
+	// e/o Info
+	@media screen and (max-width: 1024px) {
+		&__title {
+			font-size: 1rem;
+		}
+		&__runtime {
+			font-size: 0.9rem;
+		}
+		&__container {
+			grid-template-columns: repeat(auto-fit, 18.5%);
+		}
+		&__poster {
+			&--imageContainer {
+				min-height: unset;
+			}
+		}
+	}
+	@media screen and (max-width: 767px) {
+		&__title {
+			font-size: 0.77rem;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
+		&__runtime {
+			font-size: 0.7rem;
+		}
+		&__container {
+			grid-template-columns: repeat(auto-fit, 30%);
+			gap: 10px;
+		}
+		&__poster {
+			&--imageContainer {
+				min-height: 185px;
+			}
+		}
+	}
+	@media screen and (max-width: 475px) {
+		&__container {
+			gap: 30px 10px;
+		}
+		&__rated {
+			border-radius: 0;
+			font-size: 12px;
+			height: auto;
+			width: 100%;
+			left: 0;
+			top: -15px;
+		}
+		&__rating {
+			bottom: 10px;
+			top: auto;
+			padding: 5px 5px 5px 27.5px;
+			&:before {
+				height: 17.5px;
+				width: 17.5px;
+			}
+		}
+		&__info {
+			font-size: 12px;
+		}
+		&__streamingStamp {
+			width: 18px;
+		}
+	}
 }
 
 // e/o Movie Card
+// Modal
+.movieInfo {
+	align-items: center;
+	flex-direction: column;
+	width: calc(100% - 40px);
+	height: calc(100% - 120px);
+	position: fixed;
+	z-index: 5;
+	background-color: rgba(0, 0, 0, 1);
+	top: 120px;
+	left: 0;
+	padding: 20px;
+	display: flex;
+	transition: all 0.5s ease;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	&__poster {
+		position: relative;
+	}
+	h2 {
+		margin-bottom: 10px;
+		font-family: $headingFont;
+		text-transform: uppercase;
+		font-weight: 300;
+		letter-spacing: 1.5px;
+	}
+	&__rowTwo {
+		margin-bottom: 20px;
+		font-family: $headingFont;
+		text-align: center;
+		font-weight: 100;
+	}
+	&__rowThree {
+		justify-content: center;
+		gap: 15%;
+		max-width: 800px;
+		width: 100%;
+		background-color: $primary;
+		padding: 10px;
+	}
+	&__rating {
+		div {
+			position: relative;
+			padding-left: 35px;
+			display: flex;
+			align-items: center;
+			&:before {
+				content: '';
+				background-size: contain;
+				display: block;
+				height: 25px;
+				left: 5px;
+				position: absolute;
+				width: 25px;
+			}
+		}
+		.rotten {
+			&:before {
+				background-image: url('./assets/images/rotten.svg');
+			}
+		}
+		.fresh {
+			&:before {
+				background-image: url('./assets/images/fresh.svg');
+			}
+		}
+		.certified {
+			&:before {
+				background-image: url('./assets/images/certified.svg');
+			}
+		}
+		.unrated {
+			display: none;
+		}
+	}
+	&__plot {
+		margin-top: 20px;
+		max-width: 800px;
+		text-align: center;
+	}
+	&__imdb {
+		margin-top: 35px;
+		margin-bottom: 100px;
+	}
+	&__link {
+		background-color: #f5c518;
+		color: #000;
+		padding: 10px 20px;
+		border-radius: 25px;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-weight: 900;
+		font-family: $headingFont;
+	}
+	&__close {
+		right: 20px;
+		top: 20px;
+		position: absolute;
+		.modalToggle {
+			width: 25px;
+			height: 25px;
+			background-size: 100%;
+			background-color: transparent;
+			background-image: url('./assets/images/close-icon.svg');
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
+	@media screen and (max-width: 1024px) {
+		top: 0;
+		height: 100%;
+		padding-top: 100px;
+		&__rowThree,
+		&__plot {
+			max-width: 100%;
+		}
+		&__rowThree {
+			gap: unset;
+			justify-content: space-between;
+		}
+	}
+	@media screen and (max-width: 630px) {
+		padding-top: 50px;
+		&__poster {
+			img {
+				max-width: 250px;
+			}
+		}
+		&__close {
+			.modalToggle {
+				width: 30px;
+				height: 30px;
+			}
+		}
+	}
+}
+// e/o Modal
