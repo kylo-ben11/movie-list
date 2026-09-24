@@ -1,6 +1,5 @@
-<script>
-	const movies = [
-		// A thru E
+GRANT USAGE, SELECT ON SEQUENCE public.movies_id_seq TO service_role;[
+
 		{
 			Title: 'The A-Team',
 			Streaming: 'Blu-Ray',
@@ -7792,7 +7791,7 @@
 			Response: 'True',
 		},
 
-		// F thru J
+
 		{
 			Title: 'The Fall Guy',
 			Streaming: 'Vudu, Movies Anywhere, Prime Video, iTunes',
@@ -14822,7 +14821,7 @@
     "Response": "True"
 },
 
-		// K thru O
+
 
 		{
 			Title: 'The Karate Kid',
@@ -19376,7 +19375,7 @@
 			Response: 'True',
 		},
 
-		// P thru T
+
 
 		{
 			Title: 'The Painted Veil',
@@ -26692,7 +26691,7 @@
 			Response: 'True',
 		},
 
-		// U thru z
+
 
 		{
 			Title: 'U-571',
@@ -28614,7 +28613,7 @@
 			Response: 'True',
 		},
 
-		// 0 thru 9
+
 
 		{
 			Title: '13 Hours',

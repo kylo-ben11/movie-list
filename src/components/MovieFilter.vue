@@ -26,10 +26,6 @@
 					{ id: 'romance', label: '🥰 Romance' },
 					{ id: 'sci-fi', label: '🤖 Sci-Fi' },
 					{ id: 'thriller', label: '😱 Thriller' },
-					{ id: 'vanReady', label: '🚘 Van Ready' },
-					{ id: 'onlyTheBest', label: '🤩 Only the Best' },
-					{ id: 'streaming', label: '📺 Streaming' },
-					{ id: 'hardCopy', label: '📀 Hard Copy' },
 				],
 			};
 		},

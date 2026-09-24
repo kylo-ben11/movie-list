@@ -1,5 +1,8 @@
 <template>
 	<div class="modal movieInfo">
+		<div v-if="$slots.heading" class="movieInfo__heading">
+			<slot name="heading"></slot>
+		</div>
 		<slot name="poster"></slot>
 		<div class="flex movieInfo__rowOne">
 			<h2>

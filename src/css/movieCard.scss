@@ -149,8 +149,9 @@
 		&.visible {
 			display: flex;
 		}
-		&[value*='vudu'] {
-			background-color: $vudu;
+		&[value*='vudu'],
+		&[value*='fandango'] {
+			background-color: $fandango;
 		}
 		&[value*='prime video'] {
 			background-color: $primeVideo;
@@ -160,6 +161,10 @@
 		}
 		&[value*='itunes'] {
 			background-color: $iTunes;
+		}
+		&[value*='4k'] {
+			background-color: #000;
+			color: #fff;
 		}
 		&[value*='blu-ray'] {
 			background-color: $bluRay;
@@ -269,6 +274,16 @@
 		font-family: $headingFont;
 		text-align: center;
 		font-weight: 100;
+	}
+	&__heading {
+		margin: 0 0 18px;
+		font-family: $headingFont;
+		font-size: 1.75rem;
+		font-weight: 700;
+		letter-spacing: 1.5px;
+		text-transform: uppercase;
+		color: #fff;
+		text-align: center;
 	}
 	&__rowThree {
 		justify-content: center;

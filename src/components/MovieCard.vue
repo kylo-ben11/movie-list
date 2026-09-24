@@ -10,6 +10,7 @@
 				</div>
 			</template>
 			<template #title>{{ title }}</template>
+			<template v-if="overlayHeading" #heading>{{ overlayHeading }}</template>
 			<template #streaming>{{ streaming }}</template>
 			<template #rating
 				><div :class="movieRatingClasses">
@@ -28,7 +29,7 @@
 			<button class="modalToggle" @click="toggleModal"></button>
 		</the-overlay>
 	</teleport>
-	<div class="movieCard">
+	<div v-if="showCard !== false" class="movieCard">
 		<a @click="toggleModal" class="movieLink">
 			<div class="movieCard__poster">
 				<div class="movieCard__poster--imageContainer">
@@ -84,14 +85,16 @@
 			return {
 				stream: '',
 				streams: [
-					{ id: 'vudu', label: 'V' },
+					{ id: 'fandango', label: 'F' },
 					{ id: 'prime video', label: 'PV' },
 					{ id: 'movies anywhere', label: 'MA' },
 					{ id: 'itunes', label: 'i' },
+					{ id: '4k', label: '4K' },
 					{ id: 'blu-ray', label: 'B' },
 					{ id: 'dvd', label: 'D' },
 				],
 				modalOpen: false,
+				modalScrollY: 0,
 			};
 		},
 		props: [
@@ -105,7 +108,15 @@
 			'link',
 			'plot',
 			'year',
+			'initialModalOpen',
+			'showCard',
+			'overlayHeading',
 		],
+		mounted() {
+			if (this.initialModalOpen) {
+				this.modalOpen = true;
+			}
+		},
 		computed: {
 			movieRatedClasses() {
 				return {
@@ -134,30 +145,35 @@
 				};
 			},
 			movieStreamingClasses() {
+				const streaming = String(this.streaming || '');
 				return {
-					vudu: this.streaming.includes('Vudu'),
-					primeVideo: this.streaming.includes('Prime Video'),
+					fandango: streaming.toLowerCase().includes('fandango') || streaming.toLowerCase().includes('vudu'),
+					primeVideo: streaming.includes('Prime Video'),
 					moviesAnywhere:
-						this.streaming.includes('Movies Anywhere'),
-					iTunes: this.streaming.includes('iTunes'),
-					bluRay: this.streaming.includes('Blu-Ray'),
-					dvd: this.streaming.includes('DVD'),
+						streaming.includes('Movies Anywhere'),
+					iTunes: streaming.includes('iTunes'),
+					bluRay: streaming.includes('Blu-Ray'),
+					dvd: streaming.includes('DVD'),
 				};
 			},
 		},
 		watch: {
 			modalOpen() {
-				let body = document.body;
+				const body = document.body;
 				if (this.modalOpen) {
-					body.style.top = `-${window.scrollY}px`;
+					this.modalScrollY = window.scrollY;
+					body.style.top = `-${this.modalScrollY}px`;
 					body.style.position = 'fixed';
-					body.style.width = 'calc(100% - 15px)';
+					body.style.width = '100%';
 				} else {
-					const scrollY = body.style.top;
 					body.style.top = '';
 					body.style.position = '';
 					body.style.width = '';
-					window.scrollBy(0, parseInt(scrollY || '0') * -1);
+					const documentElement = document.documentElement;
+					const previousScrollBehavior = documentElement.style.scrollBehavior;
+					documentElement.style.scrollBehavior = 'auto';
+					window.scrollTo(0, this.modalScrollY);
+					documentElement.style.scrollBehavior = previousScrollBehavior;
 				}
 			},
 		},
